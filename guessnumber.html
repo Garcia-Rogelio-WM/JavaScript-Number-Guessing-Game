@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="thegame()">
+<script>
+
+    var input_text;
+    var input;
+    var sys = false;
+    var target;
+    var guesses = 0;
+
+function thegame(){
+    var random_number = Math.random() * 100;
+    var random_number_round = Math.floor(random_number);
+    target = random_number_round + 1;
+
+    while (!sys){
+        input_text = prompt("Choose a number between 1 to 100");
+        input = parseInt(input_text);
+        guesses += 1;
+        sys = check();
+
+    }
+}
+function check(){
+    if(isNaN(input)){
+        alert("Not a number");
+        return false
+    }
+    if((input < 1) || (input >100)){
+        alert("Has to be number between 1 and 100");
+        return false
+    }
+    if(input > target){
+        alert("Too Big \n\n So far " + guesses + " Trys");
+        return false
+    }
+    if(input < target){
+        alert("Too small \n\n So far " + guesses + " Trys");
+        return false;
+    }
+    alert("You got it! It was " + target + ".\n\n It took you " + guesses + " Trys ")
+    return true;
+
+}
+
+</script>
+</body>
+</html>
